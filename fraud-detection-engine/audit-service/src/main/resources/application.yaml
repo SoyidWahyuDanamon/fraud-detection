@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: audit-service
+  elasticsearch:
+    uris: http://elasticsearch:9200
+    connection-timeout: 5s
+    socket-timeout: 10s
+  kafka:
+    bootstrap-servers: kafka:9092
+
+server:
+  port: 8083
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, info
+  endpoint:
+    health:
+      show-details: always

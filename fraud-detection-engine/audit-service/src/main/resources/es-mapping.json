@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "properties": {
+      "alertId": { "type": "keyword" },
+      "transactionId": { "type": "keyword" },
+      "accountId": { "type": "keyword" },
+      "riskScore": { "type": "double" },
+      "triggeredRules": { "type": "keyword" },
+      "severity": { "type": "keyword" },
+      "detectedAt": { "type": "date" }
+    }
+  }
+}
