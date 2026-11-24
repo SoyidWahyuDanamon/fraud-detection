@@ -2,41 +2,6 @@
 
 Real-time transaction fraud detection platform using event-driven microservices architecture.
 
-## Architecture
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│ FRAUD DETECTION ENGINE │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│ │
-│ ┌──────────────────┐ ┌──────────────────┐ ┌──────────────────┐ │
-│ │ transaction- │ │ scoring- │ │ audit- │ │
-│ │ service │ │ service │ │ service │ │
-│ │ │ │ │ │ │ │
-│ │ • REST API │ │ • Kafka Consumer│ │ • Kafka Consumer│ │
-│ │ • PostgreSQL │ │ • Rule Engine │ │ • Elasticsearch │ │
-│ │ • Kafka Producer│ │ • Redis Cache │ │ • Search API │ │
-│ │ • Advanced SQL │ │ • Kafka Producer│ │ │ │
-│ └───────┬──────────┘ └───────┬──────────┘ └───────┬──────────┘ │
-│ │ │ │ │
-│ ▼ ▼ ▼ │
-│ ┌─────────────────────────────────────────────────────────────────────────┐ │
-│ │ KAFKA (KRaft Mode) │ │
-│ │ │ │
-│ │ Topic: "transactions" ──→ Topic: "alerts" ──→ Topic: "alerts.DLT"│ │
-│ └─────────────────────────────────────────────────────────────────────────┘ │
-│ │
-│ ┌──────────────┐ ┌──────────────┐ ┌──────────────────┐ │
-│ │ PostgreSQL │ │ Redis │ │ Elasticsearch │ │
-│ │ (16) │ │ (7) │ │ (8.13) │ │
-│ │ │ │ │ │ │ │
-│ │ • Transaction│ │ • Sliding │ │ • Alert Index │ │
-│ │ History │ │ Window │ │ • Full-text │ │
-│ │ • Window │ │ • Baseline │ │ Search │ │
-│ │ Functions │ │ Cache │ │ • Aggregations │ │
-│ │ • CTEs │ │ • Velocity │ │ │ │
-│ └──────────────┘ └──────────────┘ └──────────────────┘ │
-└─────────────────────────────────────────────────────────────────────────────────┘
-
-
 ## Tech Stack
 
 | Component | Technology |
